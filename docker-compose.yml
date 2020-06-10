@@ -6,7 +6,7 @@ services:
     image: jupyterhub_img
     container_name: jupyterhub
     ports:
-      - "8000:8000" 
+      - "80:8000" 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - jupyterhub_data:/srv/jupyterhub
