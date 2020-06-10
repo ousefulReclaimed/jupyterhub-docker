@@ -9,7 +9,6 @@ USER $NB_UID
 # Conda packages
 RUN conda install --quiet --yes \
     jupyterhub \
-    conda clean -tipsy && \
     fix-permissions $CONDA_DIR
 
 ENV CPATH=$CONDA_DIR/include
