@@ -30,12 +30,12 @@ actions:
     cmd[cp]: |-
       git clone https://github.com/ousefulReclaimed/jupyterhub-docker.git && cd jupyterhub-docker;
       sed -i 's|JUPYTERHUB_DOMAIN|${env.domain}|g' .env;
-      sed -i 's|RESET_ADMIN_USER|${globals.ADMIN_USER}|g' jupyterhub_config.py;
+      sed -i 's|RESET_ADMIN_USER|${globals.ADMIN_USER}|g' jupyterhub/jupyterhub_config.py;
       
       docker-compose up -d;
 
       #Checking of container is up and running 
-      until [ "`/usr/bin/docker inspect -f {{.State.Running}} proxy`"=="true" ]; do
+      until [ "`/usr/bin/docker inspect -f {{.State.Running}} jupyterhub`"=="true" ]; do
         sleep 1
         print '.'
       done;
