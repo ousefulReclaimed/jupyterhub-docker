@@ -24,7 +24,7 @@ When you do log in with the admin user, from the control panel you should see th
 
 ![](.images/Reclaim_Cloud_Dashboard_compose4.png)
 
-If you forget the name of the admin user, you should be able to look it up from the environment console: `echo $JUPYTER_ADMIN_USER` (run `prinen` to list all the environment variables).
+*If you forget the name of the admin user, I thought that you should be able to look it up from the environment console: `echo $JUPYTER_ADMIN_USER` (run `printenv` to list all the environment variables). But it doenslt seem to work for me? So make sure you make a note of the admin user! Or add one explicitly in the [`jupyterhub/jupyterhub_config.py`](https://github.com/ousefulReclaimed/jupyterhub-docker/blob/reclaim/jupyterhub/jupyterhub_config.py) file.*
 
 
 ## About
