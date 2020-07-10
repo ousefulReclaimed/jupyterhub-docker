@@ -13,7 +13,7 @@ import os
 
 ## Generic
 c.JupyterHub.admin_access = True
-c.Spawner.default_url = '/lab'
+c.Spawner.default_url = '/tree'
 
 ## Authenticator
 c.JupyterHub.authenticator_class = 'firstuseauthenticator.FirstUseAuthenticator'
