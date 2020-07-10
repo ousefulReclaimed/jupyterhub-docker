@@ -7,7 +7,7 @@ baseUrl: https://raw.githubusercontent.com/ousefulReclaimed/jupyterhub-docker/re
 #logo: images/taiga-logo.svg
 
 description: 
-  text: JupyterHub is a multi-user Jupyter server capabale of launching individual Jupyter notebook server environments for authenticated users.
+  text: JupyterHub is a multi-user Jupyter server capable of launching individual Jupyter notebook server environments for authenticated users.
   
 categories:
 - apps/ouseful
