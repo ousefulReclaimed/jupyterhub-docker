@@ -2,8 +2,8 @@
 type: install
 id: jupyterhubdemo
 name: JupyterHub
-homepage: https://taiga.io/
-baseUrl: https://raw.githubusercontent.com/ousefulReclaimed/jupyterhub-docker/master
+homepage: https://github.com/ousefulReclaimed/jupyterhub-docker
+baseUrl: https://raw.githubusercontent.com/ousefulReclaimed/jupyterhub-docker/reclaim
 #logo: images/taiga-logo.svg
 
 description: 
