@@ -1,0 +1,53 @@
+#Based on https://github.com/reclaimhosting/taiga-jps/blob/master/manifest.jps
+type: install
+id: jupyterhubdemo
+name: JupyterHub
+homepage: https://taiga.io/
+baseUrl: https://raw.githubusercontent.com/ousefulReclaimed/jupyterhub-docker/master
+#logo: images/taiga-logo.svg
+
+description: 
+  text: JupyterHub is a multi-user Jupyter server capabale of launching individual Jupyter notebook server environments for authenticated users.
+  
+categories:
+- apps/ouseful
+
+
+globals:
+  ADMIN_USER: ${fn.password}
+  
+nodes:
+  nodeType: dockerengine
+  nodeGroup: cp
+  cloudlets: 16
+  extip: false
+  displayName: JupyterHub Demo (ouseful)
+
+onInstall: setup
+
+actions:
+  setup:
+    cmd[cp]: |-
+      git clone https://github.com/ousefulReclaimed/jupyterhub-docker.git && cd jupyterhub-docker;
+      sed -i 's|JUPYTERHUB_DOMAIN|${env.domain}|g' .env;
+      sed -i 's|RESET_ADMIN_USER|${globals.ADMIN_USER}|g' jupyterhub_config.py;
+      
+      docker-compose up -d;
+
+      #Checking of container is up and running 
+      until [ "`/usr/bin/docker inspect -f {{.State.Running}} proxy`"=="true" ]; do
+        sleep 1
+        print '.'
+      done;
+
+      echo OK
+
+ssl: true
+skipNodeEmails: true
+    
+success: | 
+  **Access URL**: [https://${env.domain}/](https://${env.domain}/)  
+  **Username**: ${globals.ADMIN_USER}
+  *Log in quickly and set your password: there is a first use authenticator in place.*
+  
+  System may take a few minutes to fully be online. Be sure to update your admin user profile upon first login.
