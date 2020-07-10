@@ -22,6 +22,8 @@ nodes:
   cloudlets: 16
   extip: false
   displayName: JupyterHub Demo (ouseful)
+  env:
+    JUPYTER_ADMIN_USER: ${globals.JUPYTER_ADMIN_USER}
 
 onInstall: setup
 
