@@ -14,7 +14,7 @@ categories:
 
 
 globals:
-  ADMIN_USER: ${fn.password}
+  JUPYTER_ADMIN_USER: ${fn.password}
   
 nodes:
   nodeType: dockerengine
@@ -30,7 +30,7 @@ actions:
     cmd[cp]: |-
       git clone https://github.com/ousefulReclaimed/jupyterhub-docker.git && cd jupyterhub-docker;
       sed -i 's|JUPYTERHUB_DOMAIN|${env.domain}|g' .env;
-      sed -i 's|RESET_ADMIN_USER|${globals.ADMIN_USER}|g' jupyterhub/jupyterhub_config.py;
+      sed -i 's|RESET_ADMIN_USER|${globals.JUPYTER_ADMIN_USER}|g' jupyterhub/jupyterhub_config.py;
       
       docker-compose up -d;
 
@@ -47,7 +47,7 @@ skipNodeEmails: true
     
 success: | 
   **Access URL**: [https://${env.domain}/](https://${env.domain}/)  
-  **Username**: ${globals.ADMIN_USER}
+  **Username**: ${globals.JUPYTER_ADMIN_USER}
   *Log in quickly and set your password: there is a first use authenticator in place.*
   
   System may take a few minutes to fully be online. Be sure to update your admin user profile upon first login.
